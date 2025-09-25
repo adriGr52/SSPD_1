@@ -1,0 +1,48 @@
+ACTIVACIÓN DEL ENTORNO
+
+# 1) crear el entorno
+python -m venv .venv     # si falla, prueba: python3 -m venv .venv
+
+# 2) activarlo (Linux en Codespaces)
+source .venv/bin/activate
+
+# 3) instalar dependencias del proyecto
+pip install -r requirements.txt   # si pip no aparece, prueba: python -m pip install -r requirements.txt
+
+# 4) verificar que estás usando el Python del venv
+which python
+# debe terminar en .../.venv/bin/python
+
+___________________________________________________________________________
+
+APLANAMIENTO
+
+# 1) desde el root del repo
+cd /workspaces/SSPD
+
+# 2) mueve TODO el contenido del proyecto al raíz del repo
+#    (rsync preserva estructura y sobrescribe si existe)
+rsync -avh ./crispdm_data_understanding_class/crispdm_data_understanding_class/ ./
+
+# 3) (opcional) elimina las carpetas vacías extra
+rm -rf ./crispdm_data_understanding_class
+
+# 4) crea y activa venv en el root del repo
+python -m venv .venv
+source .venv/bin/activate
+
+# 5) instala dependencias ya en el root
+pip install -r requirements.txt
+
+# 6) ejecuta el pipeline desde el root
+python class_data_understanding.py --input data/raw/Enc_SS.xlsx --sep auto --sheet 0
+
+__________________________________________________________________________
+
+2) instala los requirements
+pip install -r requirements.txt
+
+
+
+
+
